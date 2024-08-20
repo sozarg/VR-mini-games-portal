@@ -2,17 +2,22 @@ import React from 'react';
 import 'aframe';
 
 function HomeScene({ navigate }) {
-  const handlePortalClick = (event) => {
-    const portal = event.target.getAttribute('data-portal');
-    if (portal === '1') {
-      navigate('firefighter');
-    } else {
-      alert('Próximamente...');
-    }
-  };
-
   return (
     <a-scene>
+      <a-assets>
+        {/* Pre-carga del modelo 3D */}
+        <a-asset-item id="warehouse-model" src="/warehouse.glb">
+        </a-asset-item>
+      </a-assets>
+
+      {/* Modelo 3D de la casa */}
+      <a-entity 
+        gltf-model="#warehouse-model" 
+        position="0 1 -5" 
+        rotation="0 0 0" 
+        scale="2 2 2">
+      </a-entity>
+
       {/* Portal 1 */}
       <a-box 
         position="-1 1 -3" 
@@ -22,7 +27,7 @@ function HomeScene({ navigate }) {
         class="clickable portal" 
         event-set__enter="_event: mouseenter; _target: this; color: #FFC65D"
         event-set__leave="_event: mouseleave; _target: this; color: #4CC3D9"
-        onClick={handlePortalClick}
+        onClick={() => navigate('firefighter')}
       ></a-box>
 
       {/* Portal 2 */}
@@ -34,7 +39,7 @@ function HomeScene({ navigate }) {
         class="clickable portal" 
         event-set__enter="_event: mouseenter; _target: this; color: #FFC65D"
         event-set__leave="_event: mouseleave; _target: this; color: #7BC8A4"
-        onClick={handlePortalClick}
+        onClick={() => alert('Próximamente...')}
       ></a-box>
 
       {/* Portal 3 */}
@@ -46,7 +51,7 @@ function HomeScene({ navigate }) {
         class="clickable portal" 
         event-set__enter="_event: mouseenter; _target: this; color: #4CC3D9"
         event-set__leave="_event: mouseleave; _target: this; color: #FFC65D"
-        onClick={handlePortalClick}
+        onClick={() => alert('Próximamente...')}
       ></a-box>
 
       <a-sky color="#ECECEC"></a-sky>

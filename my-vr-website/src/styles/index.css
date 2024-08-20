@@ -2,15 +2,27 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    overflow: hidden; /* Evitar barras de desplazamiento */
+  }
+  
+  a-scene {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    margin: 0;
+    padding: 0;
   }
   
   .clickable {
     cursor: pointer;
   }
   
-  button {
-    font-size: 16px;
-    padding: 10px;
-    cursor: pointer;
+  /* Opcional: Estilos para los portales */
+  .portal {
+    transition: color 0.3s ease; /* Transición suave del color */
+  }
+  
+  .portal:hover {
+    color: #FFC65D; /* Cambia el color al pasar el cursor */
   }
   

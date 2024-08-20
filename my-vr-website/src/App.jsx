@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import HomeScene from './components/HomeScene';
-import FirefighterGame from './components/FirefighterGame';
+import HomeScene from './scenes/HomeScene';
+import FirefighterGame from './scenes/FirefighterGame';
 
 function App() {
-  const [scene, setScene] = useState('home');
+  const [currentScene, setCurrentScene] = useState('home');
 
   const navigate = (scene) => {
-    setScene(scene);
+    setCurrentScene(scene);
   };
 
   return (
     <>
-      {scene === 'home' && <HomeScene navigate={navigate} />}
-      {scene === 'firefighter' && <FirefighterGame navigate={navigate} />}
+      {currentScene === 'home' && <HomeScene navigate={navigate} />}
+      {currentScene === 'firefighter' && <FirefighterGame navigate={navigate} />}
     </>
   );
 }
